@@ -501,6 +501,7 @@ class UnblockYouku(object):
         self._black_urls = header_urls + proxy_urls
         self._black_urls = list(set(self._black_urls))
         self._black_urls.sort()
+        elogger.info("black list：{}".format(len(self._black_urls)))
 
         return self._black_urls
 
@@ -510,12 +511,12 @@ class UnblockYouku(object):
         if self._white_urls is not None:
             return self._white_urls
 
-        chrome_proxy_bypass_urls = self.extract('chrome_proxy_bypass_urls')
-        pac_proxy_bypass_urls = self.extract('pac_proxy_bypass_urls')
+        proxy_bypass_urls = self.extract('PROXY_BYPASS_URLS')
 
-        self._white_urls = chrome_proxy_bypass_urls + pac_proxy_bypass_urls
+        self._white_urls = proxy_bypass_urls
         self._white_urls = list(set(self._white_urls))
         self._white_urls.sort()
+        elogger.info("white list：{}".format(len(self._white_urls)))
 
         return self._white_urls
 
