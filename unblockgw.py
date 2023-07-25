@@ -220,6 +220,7 @@ Unblock CHN 网关命令：
                 else:  # 域名
                     try:
                         ips = socket.gethostbyname_ex(domain)[2]
+                        elogger.info(f"{domain}:{ips}")
                         for ip in ips:
                             if ip not in ["127.0.0.1", "0.0.0.1"]:
                                 rule = f"add chn {ip}"
