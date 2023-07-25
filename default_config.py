@@ -8,7 +8,7 @@ import os
 DIR_PATH = os.path.dirname(os.path.realpath(__file__))
 
 # Unblock Youku 的规则文件 urls.js 链接
-UNBLOCK_YOUKU_URLSJS_URL = "https://raw.githubusercontent.com/uku/Unblock-Youku/master/shared/urls.js"
+UNBLOCK_YOUKU_URLSJS_URL = "https://raw.githubusercontent.com/uku/Unblock-Youku/master/configs/urls.mjs"
 
 
 # --- router ---
