@@ -504,7 +504,7 @@ class UnblockYouku(object):
         elogger.info(proxy_urls)
         elogger.info(extra_urls)
 
-        self._black_urls = header_urls + proxy_urls
+        self._black_urls = header_urls + proxy_urls + extra_urls
         self._black_urls = list(set(self._black_urls))
         self._black_urls.sort()
         elogger.info("black list：{}".format(len(self._black_urls)))
