@@ -500,13 +500,6 @@ class UnblockYouku(object):
         proxy_urls = self.extract('PROXY_URLS')
         extra_urls = self.read_extra()
 
-        elogger.info(header_urls)
-        elogger.info(proxy_urls)
-        elogger.info(extra_urls)
-        elogger.info(type(header_urls))
-        elogger.info(type(proxy_urls))
-        elogger.info(type(extra_urls))
-
         self._black_urls = header_urls + proxy_urls + extra_urls
         self._black_urls = list(set(self._black_urls))
         self._black_urls.sort()
@@ -541,6 +534,8 @@ class UnblockYouku(object):
             self._black_domains.append(domain)
 
         self._black_domains = list(set(self._black_domains))
+        elogger.info(self._black_domains)
+
         self._black_domains.sort(key=lambda s: s[::-1], reverse=True)
 
         return self._black_domains
