@@ -570,6 +570,7 @@ class UnblockYouku(object):
 
     def read_extra(self):
         extra_path = os.path.join(DIR_PATH, "configs/extra.txt")
+        extra_urls = []
         if os.path.isfile(extra_path):
             with open(extra_path, 'r', encoding='utf-8') as f:
                 extra_urls = f.readlines()      
