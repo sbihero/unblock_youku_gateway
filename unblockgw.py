@@ -533,7 +533,7 @@ class UnblockYouku(object):
             self._black_domains.append(domain)
 
         extra_domains = self.read_extra
-        for domain in extra_urls:
+        for domain in extra_domains:
             domain = domain.replace("\n", "")
             self._black_domains.append(domain)
 
