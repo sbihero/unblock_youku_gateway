@@ -527,14 +527,18 @@ class UnblockYouku(object):
         """域名黑名单"""
         if self._black_domains is not None:
             return self._black_domains
-
+        
         self._black_domains = []
         for url in self.black_urls:
             domain = urlsplit(url).hostname
             self._black_domains.append(domain)
 
-        self._black_domains = list(set(self._black_domains))
+        elogger.info(f"black url:{len(self._black_urls)}")
+        elogger.info(self._black_urls)
+        elogger.info(f"black domain:{len(self._black_domains)}")
         elogger.info(self._black_domains)
+
+        self._black_domains = list(set(self._black_domains))
 
         self._black_domains.sort(key=lambda s: s[::-1], reverse=True)
 
