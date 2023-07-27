@@ -220,7 +220,7 @@ Unblock CHN 网关命令：
                 else:  # 域名
                     try:
                         ips = socket.gethostbyname_ex(domain)[2]
-                        elogger.info(f"{domain}:{ips}")
+                        elogger.debug(f"{domain}:{ips}")
                         for ip in ips:
                             if ip not in ["127.0.0.1", "0.0.0.1"]:
                                 rule = f"add chn {ip}"
@@ -498,8 +498,9 @@ class UnblockYouku(object):
 
         header_urls = self.extract('HEADER_URLS')
         proxy_urls = self.extract('PROXY_URLS')
+        extra_urls = self.read_extra()
 
-        self._black_urls = header_urls + proxy_urls
+        self._black_urls = header_urls + proxy_urls + extra_urls
         self._black_urls = list(set(self._black_urls))
         self._black_urls.sort()
         elogger.info("black list：{}".format(len(self._black_urls)))
@@ -566,6 +567,14 @@ class UnblockYouku(object):
         s = re.sub(r",\s*\]", "\n]", s)  # 去除跟在最后一个元素后面的逗号
         urls = json.loads(s)
         return urls
+
+    def read_extra(self):
+        extra_path = os.path.join(DIR_PATH, "configs/extra.txt")
+        if os.path.isfile(extra_path):
+            with open(extra_path, 'r', encoding='utf-8') as f:
+                extra_urls = f.readlines()      
+        
+        return extra_urls
 
 
 def init_logging():
