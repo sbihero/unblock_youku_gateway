@@ -32,6 +32,10 @@ def main():
     elogger.debug("")
     elogger.debug(" ".join(sys.argv))
 
+    parser = argparse.ArgumentParser(usage=main.__doc__)
+    parser.add_argument('cmd', choices=['gateway', 'surge'])
+    args = parser.parse_args(sys.argv[1:2])
+
     if args.cmd == 'gateway':
         Gateway.execute(sys.argv[2:])
     elif args.cmd == 'surge':
