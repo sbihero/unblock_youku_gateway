@@ -202,7 +202,7 @@ Unblock Gateway 网关命令：
 
         ologger.info("配置成功")
 
-@classmethod
+    @classmethod
     def cmd_restore(cls, raw_args):
         """python3 unblockchn.py router setup [-h] [--no-ss]
         Unblock Gateway 还原网关为未配置状态
