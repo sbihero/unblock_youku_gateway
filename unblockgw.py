@@ -616,11 +616,14 @@ class UnblockYouku(object):
             self._black_domains.append(domain)
 
         elogger.info(f"black domain:{len(self._black_domains)}")
+        elogger.info(self._black_domains)
 
         self._black_domains = list(set(self._black_domains))
 
         self._black_domains.sort(key=lambda s: s[::-1], reverse=True)
 
+        elogger.info(f"black domain:{len(self._black_domains)}")
+        elogger.info(self._black_domains)
         return self._black_domains
 
     @property
